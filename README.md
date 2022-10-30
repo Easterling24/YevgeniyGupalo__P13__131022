@@ -39,6 +39,21 @@ npm run dev:server
 npm run populate-db
 ```
 
+2. Once backend is successfully connected and ran, proceed to frontend: 
+2. In root directory, navigate to frontend folder as shown below
+
+```bash
+# access frontend directory
+cd frontend
+
+# install dependecies
+npm install
+
+# run the app
+npm start
+```
+
+
 Your server should now be running at http://locahost:3001 and you will now have two users in your MongoDB database!
 
 ## Populated Database Data
