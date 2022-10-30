@@ -46,7 +46,7 @@ npm run populate-db
 # access frontend directory
 cd frontend
 
-# install dependecies
+# install dependencies
 npm install
 
 # run the app
