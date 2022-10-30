@@ -3,6 +3,9 @@ import Header from './components/header/index';
 import Footer from './components/footer';
 import Home from './sceens/homepageScreen/index';
 import Login from './sceens/loginScreen/index';
+import Profile from './sceens/userScreen/index';
+import ProtectedRoute from './components/protectedRoute';
+import './index.scss';
 
 function App() {
 	return (
@@ -12,6 +15,9 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
+				<Route element={<ProtectedRoute />}>
+					<Route path="/profile" element={<Profile />} />
+				</Route>
 			</Routes>
 
 			<Footer />
@@ -20,8 +26,6 @@ function App() {
 }
 
 export default App;
-
-
 
 // export const App = () => {
 // 	const isAuth = useSelector((state) => state.auth.isConnected);

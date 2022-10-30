@@ -153,7 +153,7 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.sign-in-button {
+/* .sign-in-button {
   display: block;
   width: 100%;
   padding: 8px;
@@ -163,7 +163,7 @@ body {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
-}
+} */
 
 .sign-in-content {
   box-sizing: border-box;

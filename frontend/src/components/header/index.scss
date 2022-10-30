@@ -1,0 +1,81 @@
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+  }
+  
+  .main-nav a {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .main-nav a.router-link-exact-active {
+    color: #42b983;
+  }
+  
+  .main-nav-item {
+    text-decoration: none;
+    margin-right: 0.5rem;
+    display: flex;
+    font-size: 20px;
+    transition: all 300ms ease-in-out;
+  }
+
+  .main-nav-item > svg {
+    font-size: 25px;
+    margin-right: 0.25rem;
+  }
+  
+  .main-nav-item:hover {
+    color: #00bc77;
+  }
+  
+  .main-nav-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .main-nav-logo-image {
+    max-width: 100%;
+    width: 200px;
+  }
+
+  .main-nav-info{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+    font-size: 20px;
+  }
+
+  .main-nav-button{
+    font-size: 20px;
+    margin-right: 0.25rem;
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 300ms all ease-in-out;
+  }
+
+  .main-nav-button:hover{
+    color: #00bc77;
+
+  }
+
+  .main-nav-icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    margin-right: 1rem;
+    text-decoration: none;
+  }
+
+  .main-nav-icon > svg{
+    margin-right: 0.25rem;
+    font-size: 30px;
+
+  }
