@@ -3,14 +3,15 @@ import axios from 'axios';
 
 export const registerUser = createAsyncThunk(
 	'user/signup',
-	async ({ firstName, email, password }, { rejectWithValue }) => {
+	async ({ email, password, firstName, lastName }, { rejectWithValue }) => {
 		try {
 			const config = {
 				headers: {
 					'Content-Type': 'application/json'
 				}
 			};
-			await axios.post('/user/signup', { firstName, email, password }, config);
+			const { data } = await axios.post('api/v1/user/signup', { email, password, firstName, lastName }, config);
+			console.log(data);
 		} catch (error) {
 			if (error.response && error.response.data.message) {
 				return rejectWithValue(error.response.data.message);
@@ -56,7 +57,7 @@ export const getUserProfile = createAsyncThunk('user/profileDetail', async (bear
 				Authorization: `Bearer ${user.userToken}`
 			}
 		};
-		const { data } = await axios.post('http://localhost:3001/api/v1/user/profile', bodyParameters, config);
+		const { data } = await axios.post('api/v1/user/profile', bodyParameters, config);
 		return data;
 	} catch (error) {
 		// return custom error message from API if any
@@ -66,16 +67,14 @@ export const getUserProfile = createAsyncThunk('user/profileDetail', async (bear
 			return rejectWithValue(error.message);
 		}
 	}
-}) 
+});
 
 export const updateProfileData = createAsyncThunk(
 	'user/profile-update',
-	async ({ firstName, lastName },{getState, rejectWithValue }) => {
+	async ({ firstName, lastName }, { getState, rejectWithValue }) => {
 		try {
 			const { user } = getState();
-			const bodyParameters = {
-				key: 'value'
-			};
+
 			const config = {
 				headers: {
 					'Content-Type': 'application/json',
@@ -83,21 +82,13 @@ export const updateProfileData = createAsyncThunk(
 				}
 			};
 
-			console.log(config)
+			console.log(config);
 
+			const { data } = await axios.put('api/v1/user/profile', { firstName, lastName }, config);
 
-			const { data } = await axios.put(
-				'http://localhost:3001/api/v1/user/profile',
-				{ firstName, lastName },
-				config
-			);
+			console.log(data);
 
-			console.log(data)
-
-			return data
-
-
-		
+			return data;
 		} catch (error) {
 			if (error.response && error.response.data.message) {
 				return rejectWithValue(error.response.data.message);

@@ -44,8 +44,9 @@ const userSlice = createSlice({
 			state.loading = true;
 			state.error = null;
 		},
-		[registerUser.fulfilled]: (state) => {
+		[registerUser.fulfilled]: (state, { payload }) => {
 			state.loading = false;
+			// state.userInfo = payload
 			state.success = true;
 		},
 		[registerUser.rejected]: (state, { payload }) => {
@@ -59,7 +60,7 @@ const userSlice = createSlice({
 		},
 		[getUserProfile.fulfilled]: (state, { payload }) => {
 			state.loading = false;
-			state.userInfo = payload.body
+			state.userInfo = payload.body;
 		},
 		[getUserProfile.rejected]: (state, { payload }) => {
 			state.loading = false;
@@ -71,7 +72,7 @@ const userSlice = createSlice({
 			state.loading = true;
 		},
 		[updateProfileData.fulfilled]: (state, { payload }) => {
-			console.log(payload)
+			console.log(payload);
 			state.loading = false;
 			state.userInfo = payload.body;
 		},

@@ -4,6 +4,7 @@ import Footer from './components/footer';
 import Home from './sceens/homepageScreen/index';
 import Login from './sceens/loginScreen/index';
 import Profile from './sceens/userScreen/index';
+import SignUp from './sceens/signUpScreen/index';
 import ProtectedRoute from './components/protectedRoute';
 import './index.scss';
 
@@ -14,6 +15,7 @@ function App() {
 
 			<Routes>
 				<Route path="/" element={<Home />} />
+				<Route path='/signup' element={<SignUp/>} />
 				<Route path="/login" element={<Login />} />
 				<Route element={<ProtectedRoute />}>
 					<Route path="/profile" element={<Profile />} />
