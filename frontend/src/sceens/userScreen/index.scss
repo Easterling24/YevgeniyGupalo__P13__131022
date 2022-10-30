@@ -34,6 +34,7 @@
 	box-sizing: border-box;
 	text-align: left;
 	margin-bottom: 2rem;
+	border-radius: 5px;
 }
 
 .account-amount {
@@ -59,16 +60,33 @@
 }
 
 .edit-button {
-	border-color: #00bc77;
-	background-color: #00bc77;
-	color: #fff;
+	display: flex;
+	// width: 100%;
+	padding: 8px;
+	font-size: 15px;
 	font-weight: bold;
-	padding: 10px;
+	margin-top: 1rem;
+	border-color: #00bc77;
+	color: #fff;
+	transition: 150ms all linear;
+	color: #fff;
+	background: lighten($color: #00bc77, $amount: 3);
+	border-radius: 5px;
+	outline: none;
+	cursor: pointer;
+	&:hover {
+		background: darken($color: #00bc77, $amount: 1.5);
+		transition: all 250ms linear;
+		border-color: #00bc77;
+	}
 }
 
 .header {
 	color: #fff;
 	margin-bottom: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
 	& > h1 {
 		margin-bottom: 1rem;
@@ -83,8 +101,18 @@
 	font-weight: bold;
 	margin-top: 1rem;
 	border-color: #00bc77;
-	background-color: #00bc77;
 	color: #fff;
+	transition: 150ms all linear;
+	color: #fff;
+	background: lighten($color: #00bc77, $amount: 3);
+	border-radius: 5px;
+	outline: none;
+	cursor: pointer;
+	&:hover {
+		background: darken($color: #00bc77, $amount: 1.5);
+		transition: all 250ms linear;
+		border-color: #00bc77;
+	}
 }
 
 .header-name-container {
@@ -143,7 +171,7 @@
 				transition: all 250ms linear;
 			}
 
-			&:disabled{
+			&:disabled {
 				background-color: #929495;
 				border: 1px solid transparent;
 			}
@@ -173,14 +201,17 @@
 				text-shadow: -1px -1px 0 darken($color: #00bc77, $amount: 9.5);
 				transition: all 250ms linear;
 			}
-
-		
 		}
-
-		
 	}
 }
 
 .offScreen {
 	display: none;
+}
+
+.loading-container {
+	min-height: 80vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

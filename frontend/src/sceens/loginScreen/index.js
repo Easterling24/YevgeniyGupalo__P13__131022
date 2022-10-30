@@ -81,10 +81,10 @@ function Login() {
 								required
 							/>
 
-							<p className={email.length === 0 ? 'errorMsgInput' : 'offScreen'}>
+							{/* <p className={email.length === 0 ? 'errorMsgInput' : 'offScreen'}>
 								{' '}
 								This field cannot be empty!
-							</p>
+							</p> */}
 						</div>
 						<div className="input-wrapper">
 							<label htmlFor="password">Password</label>
@@ -104,10 +104,10 @@ function Login() {
 								</div>
 							</div>
 
-							<p className={password.length === 0 ? 'errorMsgInput' : 'offScreen'}>
+							{/* <p data-error className={password.length === 0 ? 'errorMsgInput' : 'offScreen'}>
 								{' '}
 								This field cannot be empty!
-							</p>
+							</p> */}
 						</div>
 
 						<div className="input-remember">
