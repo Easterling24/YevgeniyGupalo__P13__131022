@@ -102,3 +102,19 @@ input:focus {
 	justify-content: center;
 	align-items: center;
 }
+
+.errorMsg {
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	transition: 150ms ease-in-out all;
+	color: white;
+	background: #e73844;
+}
+
+.offScreen {
+	display: none;
+	transition: 150ms ease-in-out all;
+}

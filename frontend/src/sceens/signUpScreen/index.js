@@ -3,11 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../features/user/userActions';
 import { Link } from 'react-router-dom';
 import { RotateLoader } from 'react-spinners';
+import { AiFillEyeInvisible } from 'react-icons/ai';
+import { AiFillEye } from 'react-icons/ai';
+import { ClipLoader } from 'react-spinners';
 import './index.scss';
 
 export default function SignUp() {
 	const [ loadingScreen, setLoadingScreen ] = useState(true);
 	const [ passwordVisible, setPasswordVisible ] = useState(false);
+    const {loading, error} = useSelector((state) => state.user)
+
+
 
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
@@ -26,7 +32,7 @@ export default function SignUp() {
 		loadScreenData();
 	}, []);
 
-	const handlePasswordVisibility = () => {
+	const handleVisibilityIcon = () => {
 		setPasswordVisible(true);
 
 		if (passwordVisible === true) {
@@ -51,33 +57,26 @@ export default function SignUp() {
 			) : (
 				<div className="sign-up-content ">
 					<form onSubmit={handleSumbit}>
-						{/* <p ref={errRef} className={error ? 'errorMsg' : 'offScreen'}>
-							No such user
-						</p> */}
-
+                    <p  className={error ? 'errorMsg' : 'offScreen'}>
+							Email already exists
+						</p>
 						<div className="input-wrapper">
 							<label htmlFor="email">Email</label>
 							<input
 								type="email"
 								id="email"
-								// ref={emailRef}
 								autoComplete="off"
 								onChange={(e) => setEmail(e.target.value)}
 								value={email}
 								required
 							/>
-
-							{/* <p className={email.length === 0 ? 'errorMsgInput' : 'offScreen'}>
-								{' '}
-								This field cannot be empty!
-							</p> */}
 						</div>
 						<div className="input-wrapper">
 							<label htmlFor="password">Password</label>
 
 							<div className="password-input-wrapper">
 								<input
-									// type={passwordVisible ? 'text' : 'password'}
+									type={passwordVisible ? 'text' : 'password'}
 									id="password"
 									autoComplete="off"
 									onChange={(e) => setPassword(e.target.value)}
@@ -85,64 +84,36 @@ export default function SignUp() {
 									required
 								/>
 
-								{/* <div className="visible-icon" onClick={() => handleVisibilityIcon()}>
+								<div className="visible-icon" onClick={() => handleVisibilityIcon()}>
 									{passwordVisible ? <AiFillEye /> : <AiFillEyeInvisible />}
-								</div> */}
+								</div>
 							</div>
-
-							{/* <p data-error className={password.length === 0 ? 'errorMsgInput' : 'offScreen'}>
-								{' '}
-								This field cannot be empty!
-							</p> */}
 						</div>
 						<div className="input-wrapper">
 							<label htmlFor="firstname">Firstname</label>
 							<input
 								type="text"
 								id="firstname"
-								// ref={emailRef}
 								autoComplete="off"
 								onChange={(e) => setFirstName(e.target.value)}
 								value={firstName}
 								required
 							/>
-
-							{/* <p className={email.length === 0 ? 'errorMsgInput' : 'offScreen'}>
-								{' '}
-								This field cannot be empty!
-							</p> */}
 						</div>
 						<div className="input-wrapper">
 							<label htmlFor="lastname">Lastname</label>
 							<input
 								type="text"
 								id="lastname"
-								// ref={emailRef}
 								autoComplete="off"
 								onChange={(e) => setLastName(e.target.value)}
 								value={lastName}
 								required
 							/>
-
-							{/* <p className={email.length === 0 ? 'errorMsgInput' : 'offScreen'}>
-								{' '}
-								This field cannot be empty!
-							</p> */}
 						</div>
 
-						{/* <div className="input-remember">
-							<input type="checkbox" id="remember-me" />
-							<label htmlFor="remember-me">Remember me</label>
-						</div>
 						<button className="sign-in-button">
-							{loading ? <ClipLoader size={15} color="#fff" /> : <p>Sign in</p>}
-						</button>
-						<span className="sign-up">
-							Dont have an account yet? <Link to="/signup"> Sign up here!</Link>
-						</span> */}
-
-						<button className="sign-in-button">
-							<p>Sign up</p>
+                        {loading ? <ClipLoader size={15} color="#fff" /> : <p>Sign up</p>}
 						</button>
 						<span className="sign-up">
 							Have an account? <Link to="/login"> Sign in here!</Link>

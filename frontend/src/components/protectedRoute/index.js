@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
+import UnauthImg from '../../assets/img/Unauthorized.png';
 import './index.scss';
 
 export default function ProtectedRoute() {
@@ -8,10 +9,13 @@ export default function ProtectedRoute() {
 	if (!userInfo) {
 		return (
 			<section className="unauthorized-wrapper">
-				<h1>Unauthorized:/ </h1>
-				<span>
-					<Link to="/login">Sign in first</Link>
-				</span>
+				<div className="unauthorized-container-img">
+					<img src={UnauthImg} alt="unauthorized-img" />
+				</div>
+
+	
+					<Link className='sign-in-link' to="/login">Sign in first</Link>
+				
 			</section>
 		);
 	}
