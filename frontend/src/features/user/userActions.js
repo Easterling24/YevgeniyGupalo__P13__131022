@@ -45,7 +45,7 @@ export const userLogin = createAsyncThunk('user/login', async ({ email, password
 	}
 });
 
-export const getUserProfile = createAsyncThunk('user/profileDetail', async (bearer, { getState, rejectWithValue }) => {
+export const getUserProfile = createAsyncThunk('user/profileDetail', async ({ getState, rejectWithValue }) => {
 	try {
 		const { user } = getState();
 		const bodyParameters = {

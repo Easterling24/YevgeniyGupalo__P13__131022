@@ -81,7 +81,9 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-    put:
+
+  /user/profile:
+     put:
       security:
         - Bearer: []
       tags:
@@ -108,6 +110,52 @@ paths:
             $ref: '#/definitions/ApiResponse'
         '400':
           description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/profile/checkingAccount:
+    get:
+      tags:
+        - User Module
+      summary: Getting checking account
+      description: API for Login
+      parameters:
+      - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Successfully got access to the checking account
+          schema:
+            $ref: '#/definitions/LoginResponse'
+        '403':
+          description: Unauthorized
+        '500':
+          description: Internal Server Error
+  /user/profile/checkingAccount/{transactionID}:
+    get:
+      tags:
+        - User Module
+      description: API for Login
+      parameters:
+      - in: path
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: int64
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Successfully got the transaction id
+          schema:
+            $ref: '#/definitions/LoginResponse'
+            type: object
+            properties: 
+        '403':
+          description: Unauthorized
         '500':
           description: Internal Server Error
 securityDefinitions:
