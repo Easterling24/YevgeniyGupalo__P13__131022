@@ -81,9 +81,7 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-
-  /user/profile:
-     put:
+    put:
       security:
         - Bearer: []
       tags:
@@ -101,8 +99,6 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/UserProfile'
-      produces:
-        - application/json
       responses:
         '200':
           description: User profile retrieved successully
@@ -112,52 +108,275 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/profile/checkingAccount:
-    get:
+  /user/profile/main-account:
+    get: 
+      security:
+        - Bearer: []
       tags:
         - User Module
-      summary: Getting checking account
-      description: API for Login
-      parameters:
-      - in: header
+      summary: User Profile API
+      description: API for getting the user's main account
+      parameters: 
+        - in: header
           name: Authorization
           description: Attach Bearer JWT token
           required: true
-      produces:
+      produces: 
         - application/json
-      responses:
-        '200':
-          description: Successfully got access to the checking account
-          schema:
-            $ref: '#/definitions/LoginResponse'
-        '403':
-          description: Unauthorized
-        '500':
-          description: Internal Server Error
-  /user/profile/checkingAccount/{transactionID}:
-    get:
+      responses: 
+        "200": 
+          description: "main account successfully retrieved"
+          schema: 
+            $ref: '#/definitions/TransactionList'
+        "403":
+          description: "unauthorized"
+        "500":
+          desciption: "internal server error"
+
+  /user/profile/main-account/{main-accountID}/details:
+    get: 
+      security:
+        - Bearer: []
       tags:
         - User Module
-      description: API for Login
-      parameters:
-      - in: path
+      summary: User Profile API
+      description: API for getting the main account transaction
+      parameters: 
+        - in: path
+          name: transactionID
+          schema: 
+            type: integer
+          required: true 
+          description: Numeric ID of the transaction to get
+        - in: header
           name: Authorization
           description: Attach Bearer JWT token
           required: true
-          type: int64
+        - in: query
+          name : limit
+          type: integer
+          description: the number of items to return
+        - in: query
+          name: month
+          format: MM:YYYY
+          description: the month of transaction to get
+
       produces:
         - application/json
-      responses:
-        '200':
-          description: Successfully got the transaction id
-          schema:
-            $ref: '#/definitions/LoginResponse'
-            type: object
-            properties: 
-        '403':
-          description: Unauthorized
-        '500':
-          description: Internal Server Error
+      responses: 
+        "200": 
+          description: Transaction detail retrieved successfully
+        "404":
+          description: No transaction with such ID
+        "403":
+          description: "unauthorized"
+        "500":
+          description: Internal server error
+    put: 
+      security: 
+        Bearer: []
+      tags: 
+      - User Module
+      summary: User Profile API
+      description: API for updating transaction details
+      parameters: 
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string 
+        - in: body 
+          name: body
+          description: Update user profile attributes
+          required: true
+          schema: 
+            $ref: "#/definitions/TransactionAttributes"
+      produces: 
+        application/json
+      responses: 
+        "200":
+          description: "Transaction attributes have been updated successfully"
+        "500": 
+          description: "Internal server error"
+  /user/profile/savings:
+    get: 
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: User Profile API
+      description: API for getting the user's savings account
+      parameters: 
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+      produces: 
+        - application/json
+      responses: 
+        "200": 
+          description: "main account successfully retrieved"
+          schema: 
+            $ref: '#/definitions/TransactionList'
+        "403":
+          description: "unauthorized"
+        "500":
+          desciption: "internal server error"
+
+  /user/profile/savings/{savingsID}/details:
+    get: 
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: User Profile API
+      description: API for getting the user's saving account transaction ID
+      parameters: 
+        - in: path
+          name: transactionID
+          schema: 
+            type: integer
+          required: true 
+          description: Numeric ID of the transaction to get
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+        - in: query
+          name : limit
+          type: integer
+          description: the number of items to return
+        - in: query
+          name: month
+          format: MM:YYYY
+          description: the month of transaction to get
+
+      produces:
+        - application/json
+      responses: 
+        "200": 
+          description: Transaction detail retrieved successfully
+        "404":
+          description: No transaction with such ID
+        "403":
+          description: "unauthorized"
+        "500":
+          description: Internal server error
+    put: 
+      security: 
+        Bearer: []
+      tags: 
+      - User Module
+      summary: User Profile API
+      description: API for updating transaction details
+      parameters: 
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string 
+        - in: body 
+          name: body
+          description: Update user profile attributes
+          required: true
+          schema: 
+            $ref: "#/definitions/TransactionAttributes"
+      produces: 
+        application/json
+      responses: 
+        "200":
+          description: "Transaction attributes have been updated successfully"
+        "500": 
+          description: "Internal server error"
+  /user/profile/credit-card:
+    get: 
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: User Profile API
+      description: API for getting the user's credit card account
+      parameters: 
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+      produces: 
+        - application/json
+      responses: 
+        "200": 
+          description: "main account successfully retrieved"
+          schema: 
+            $ref: '#/definitions/TransactionList'
+        "403":
+          description: "unauthorized"
+        "500":
+          desciption: "internal server error"
+  /user/profile/credit-card/{credit-cardID}/details:
+    get: 
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: User Profile API
+      description: API for getting the main account transaction
+      parameters: 
+        - in: path
+          name: transactionID
+          schema: 
+            type: integer
+          required: true 
+          description: Numeric ID of the transaction to get
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+        - in: query
+          name : limit
+          type: integer
+          description: the number of items to return
+        - in: query
+          name: month
+          format: MM:YYYY
+          description: the month of transaction to get
+
+      produces:
+        - application/json
+      responses: 
+        "200": 
+          description: Transaction detail retrieved successfully
+        "404":
+          description: No transaction with such ID
+        "403":
+          description: "unauthorized"
+        "500":
+          description: Internal server error
+    put: 
+      security: 
+        Bearer: []
+      tags: 
+      - User Module
+      summary: User Profile API
+      description: API for updating transaction details
+      parameters: 
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string 
+        - in: body 
+          name: body
+          description: Update user profile attributes
+          required: true
+          schema: 
+            $ref: "#/definitions/TransactionAttributes"
+      produces: 
+        application/json
+      responses: 
+        "200":
+          description: "Transaction attributes have been updated successfully"
+        "500": 
+          description: "Internal server error"
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -211,4 +430,32 @@ definitions:
       firstName:
         type: string
       lastName:
+        type: string
+
+  TransactionList: 
+    type: array
+    items: 
+      type: object
+      properties: 
+        id: 
+          type: integer 
+        category: 
+          type: string
+        notes: 
+          type: string
+  TransactionAttributes:
+    type: object
+    properties:
+      category: 
+        type: string
+      notes: 
+        type: string
+  TransactionDetail:
+    type: object
+    properties:
+      id:
+        type: integer
+      category: 
+        type: string
+      notes: 
         type: string
