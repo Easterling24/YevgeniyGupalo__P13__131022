@@ -6,7 +6,7 @@ info:
   termsOfService: 'http://swagger.io/terms/'
 host: localhost:3001
 basePath: /api/v1
-schemes:
+schemes:  
   - http
 paths:
   /user/login:
@@ -113,7 +113,7 @@ paths:
       security:
         - Bearer: []
       tags:
-        - User Module
+        - Transaction Module
       summary: User Profile API
       description: API for getting the user's main account
       parameters: 
@@ -138,7 +138,7 @@ paths:
       security:
         - Bearer: []
       tags:
-        - User Module
+         - Transaction Module
       summary: User Profile API
       description: API for getting the main account transaction
       parameters: 
@@ -160,7 +160,6 @@ paths:
           name: month
           format: MM:YYYY
           description: the month of transaction to get
-
       produces:
         - application/json
       responses: 
@@ -176,7 +175,7 @@ paths:
       security: 
         Bearer: []
       tags: 
-      - User Module
+        - Transaction Module
       summary: User Profile API
       description: API for updating transaction details
       parameters: 
@@ -203,7 +202,7 @@ paths:
       security:
         - Bearer: []
       tags:
-        - User Module
+         - Transaction Module
       summary: User Profile API
       description: API for getting the user's savings account
       parameters: 
@@ -228,7 +227,7 @@ paths:
       security:
         - Bearer: []
       tags:
-        - User Module
+         - Transaction Module
       summary: User Profile API
       description: API for getting the user's saving account transaction ID
       parameters: 
@@ -266,7 +265,7 @@ paths:
       security: 
         Bearer: []
       tags: 
-      - User Module
+         - Transaction Module
       summary: User Profile API
       description: API for updating transaction details
       parameters: 
@@ -293,7 +292,7 @@ paths:
       security:
         - Bearer: []
       tags:
-        - User Module
+       - Transaction Module
       summary: User Profile API
       description: API for getting the user's credit card account
       parameters: 
@@ -317,7 +316,7 @@ paths:
       security:
         - Bearer: []
       tags:
-        - User Module
+         - Transaction Module
       summary: User Profile API
       description: API for getting the main account transaction
       parameters: 
@@ -339,7 +338,6 @@ paths:
           name: month
           format: MM:YYYY
           description: the month of transaction to get
-
       produces:
         - application/json
       responses: 
@@ -355,7 +353,7 @@ paths:
       security: 
         Bearer: []
       tags: 
-      - User Module
+       - Transaction Module
       summary: User Profile API
       description: API for updating transaction details
       parameters: 
