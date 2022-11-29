@@ -129,7 +129,7 @@ paths:
           schema: 
             $ref: '#/definitions/TransactionList'
         "403":
-          description: "unauthorized"
+          description: "Unauthorized"
         "500":
           desciption: "internal server error"
 
@@ -165,6 +165,8 @@ paths:
       responses: 
         "200": 
           description: Transaction detail retrieved successfully
+          schema: 
+            $ref: "#/definitions/TransactionDetail"
         "404":
           description: No transaction with such ID
         "403":
@@ -255,10 +257,12 @@ paths:
       responses: 
         "200": 
           description: Transaction detail retrieved successfully
+          schema: 
+            $ref: "#/definitions/TransactionDetail"
         "404":
           description: No transaction with such ID
         "403":
-          description: "unauthorized"
+          description: "Unauthorized"
         "500":
           description: Internal server error
     put: 
@@ -308,7 +312,7 @@ paths:
           schema: 
             $ref: '#/definitions/TransactionList'
         "403":
-          description: "unauthorized"
+          description: "Unauthorized"
         "500":
           desciption: "internal server error"
   /user/profile/credit-card/{credit-cardID}/details:
@@ -343,10 +347,12 @@ paths:
       responses: 
         "200": 
           description: Transaction detail retrieved successfully
+          schema: 
+            $ref: "#/definitions/TransactionDetail"
         "404":
           description: No transaction with such ID
         "403":
-          description: "unauthorized"
+          description: "Unauthorized"
         "500":
           description: Internal server error
     put: 
@@ -429,18 +435,32 @@ definitions:
         type: string
       lastName:
         type: string
-
   TransactionList: 
-    type: array
-    items: 
-      type: object
-      properties: 
-        id: 
-          type: integer 
-        category: 
-          type: string
-        notes: 
-          type: string
+    type: object
+    properties:
+      status: 
+        type: integer
+      message: 
+        type: string
+      body: 
+        type: array
+        items: 
+          type: object
+          properties: 
+            id: 
+              type: integer
+            date: 
+              type: string
+            ammount: 
+              type: integer
+            origin: 
+              type: string
+            transacationType: 
+              type: string
+            category: 
+              type: string
+            notes: 
+              type: string
   TransactionAttributes:
     type: object
     properties:
@@ -450,10 +470,18 @@ definitions:
         type: string
   TransactionDetail:
     type: object
-    properties:
-      id:
-        type: integer
+    properties: 
+      id: 
+          type: integer
+      date: 
+          type: string
+      ammount: 
+          type: integer
+      origin: 
+          type: string
+      transacationType: 
+          type: string
       category: 
-        type: string
+          type: string
       notes: 
-        type: string
+          type: string
