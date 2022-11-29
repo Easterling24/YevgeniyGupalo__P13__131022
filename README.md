@@ -2,7 +2,7 @@
 
 This codebase contains the code needed to run the backend for Argent Bank.
 
-![Sign In Page]("signInPage.png")
+![Sign In Page](signInPage.png)
 
 ## Getting Started  
 
