@@ -104,10 +104,6 @@ function Login() {
 								</div>
 							</div>
 
-							{/* <p data-error className={password.length === 0 ? 'errorMsgInput' : 'offScreen'}>
-								{' '}
-								This field cannot be empty!
-							</p> */}
 						</div>
 
 						<div className="input-remember">

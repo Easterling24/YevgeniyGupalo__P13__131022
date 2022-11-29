@@ -45,20 +45,20 @@ export const userLogin = createAsyncThunk('user/login', async ({ email, password
 	}
 });
 
-export const getUserProfile = createAsyncThunk('user/profileDetail', async ({ getState, rejectWithValue }) => {
+export const getUserProfile = createAsyncThunk('user/profileDetail', async ( userToken,{ rejectWithValue }) => {
+
 	try {
-		const { user } = getState();
+
 		const bodyParameters = {
 			key: 'value'
 		};
-
 		const config = {
 			headers: {
-				Authorization: `Bearer ${user.userToken}`
+				Authorization: `Bearer ${userToken}`
 			}
 		};
 		const { data } = await axios.post('api/v1/user/profile', bodyParameters, config);
-		return data;
+		return data
 	} catch (error) {
 		// return custom error message from API if any
 		if (error.response && error.response.data.message) {

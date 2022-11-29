@@ -13,6 +13,17 @@ export default function Profile() {
 	const [ lastName, setLastName ] = useState('');
 	const dispatch = useDispatch();
 
+
+	useEffect(
+		() => {
+			if (userToken) {
+				dispatch(getUserProfile(userToken));
+			}
+		},
+		[ userToken, dispatch ]
+	);
+
+
 	useEffect(() => {
 		const loadScreenData = async () => {
 			await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -22,20 +33,16 @@ export default function Profile() {
 		loadScreenData();
 	}, []);
 
-	useEffect(
-		() => {
-			if (userToken) {
-				dispatch(getUserProfile());
-			}
-		},
-		[ userToken, dispatch ]
-	);
+
+
 
 	const handleUpdateName = () => {
 		const data = { firstName, lastName };
 		dispatch(updateProfileData(data));
 		setEditData(false);
 	};
+
+	console.log(userInfo)
 
 	return (
 		<main className="main bg-dark">
